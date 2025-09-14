@@ -1,0 +1,40 @@
+<div data-ck-root>
+  <style>
+    [data-ck-root] #ck-bar{position:fixed;top:0;left:0;right:0;z-index:99999;display:flex;align-items:center;gap:10px;padding:8px 12px;background:#fff;color:#111;font-family:sans-serif;border-bottom:3px solid rgba(0,0,0,.06)}
+    [data-ck-root] #ck-bar img{width:120px;height:auto;object-fit:cover}
+    [data-ck-root] #ck-bar .ck-text{font-weight:600;font-size:18px}
+    [data-ck-root] #ck-bar .ck-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+    [data-ck-root] #ck-bar button,[data-ck-root] #ck-bar a{background:#efefef;border:1px solid #ddd;color:#000;padding:6px 10px;border-radius:6px;font-size:14px;cursor:pointer;text-decoration:none}
+    [data-ck-root] #ck-bar button.primary{background:#000;color:#fff;border:0}
+    [data-ck-root] #ck-close{background:transparent;border:0;color:#000;font-weight:700;padding:6px 8px}
+    [data-ck-root] #ck-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.45);z-index:200000}
+    [data-ck-root] #ck-modal .box{background:#fff;color:#111;padding:12px;border-radius:10px;max-width:720px;width:92%}
+    [data-ck-root] #ck-modal textarea{width:100%;height:160px;padding:8px;font-family:monospace;font-size:13px;border:1px solid #ddd;border-radius:6px;resize:vertical}
+    [data-ck-root] #ck-modal .row{display:flex;gap:8px;margin-top:8px;justify-content:flex-end}
+  </style>
+
+  <div id="ck-bar">
+    <img src="https://i.ibb.co/TxzkjYk0/we-are-charlie.png" alt="Charlie Kirk">
+    <div class="ck-text">We are Charlie!</div>
+    <div class="ck-actions">
+      <a href="https://tpusa.com/meetthefounder/" target="_blank">Visit</a>
+      <button id="ck-get">Get code</button>
+      <button id="ck-accept" class="primary">OK</button>
+      <button id="ck-close" aria-label="Close">✕</button>
+    </div>
+  </div>
+
+  <div id="ck-modal">
+    <div class="box">
+      <strong>Copy this embed</strong>
+      <p style="font-size:13px;color:#444">Paste into another site:</p>
+      <textarea id="ck-embed" readonly></textarea>
+      <div class="row">
+        <button id="ck-copy">Copy</button>
+        <button id="ck-close-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>(function(){const root=document.currentScript.closest('[data-ck-root]'),bar=root.querySelector('#ck-bar'),modal=root.querySelector('#ck-modal'),embedTA=root.querySelector('#ck-embed'),template='<div data-ck-root>\n  <style>\n    [data-ck-root] #ck-bar{position:fixed;top:0;left:0;right:0;z-index:99999;display:flex;align-items:center;gap:10px;padding:8px 12px;background:#fff;color:#111;font-family:sans-serif;border-bottom:3px solid rgba(0,0,0,.06)}\n    [data-ck-root] #ck-bar img{width:120px;height:auto;object-fit:cover}\n    [data-ck-root] #ck-bar .ck-text{font-weight:600;font-size:18px}\n    [data-ck-root] #ck-bar .ck-actions{margin-left:auto;display:flex;gap:8px;align-items:center}\n    [data-ck-root] #ck-bar button,[data-ck-root] #ck-bar a{background:#efefef;border:1px solid #ddd;color:#000;padding:6px 10px;border-radius:6px;font-size:14px;cursor:pointer;text-decoration:none}\n    [data-ck-root] #ck-bar button.primary{background:#000;color:#fff;border:0}\n    [data-ck-root] #ck-close{background:transparent;border:0;color:#000;font-weight:700;padding:6px 8px}\n    [data-ck-root] #ck-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.45);z-index:200000}\n    [data-ck-root] #ck-modal .box{background:#fff;color:#111;padding:12px;border-radius:10px;max-width:720px;width:92%}\n    [data-ck-root] #ck-modal textarea{width:100%;height:160px;padding:8px;font-family:monospace;font-size:13px;border:1px solid #ddd;border-radius:6px;resize:vertical}\n    [data-ck-root] #ck-modal .row{display:flex;gap:8px;margin-top:8px;justify-content:flex-end}\n  </style>\n\n  <div id="ck-bar">\n    <img src="https://i.ibb.co/TxzkjYk0/we-are-charlie.png" alt="Charlie Kirk">\n    <div class="ck-text">We are Charlie!</div>\n    <div class="ck-actions">\n      <a href="https://tpusa.com/meetthefounder/" target="_blank">Visit</a>\n      <button id="ck-get">Get code</button>\n      <button id="ck-accept" class="primary">OK</button>\n      <button id="ck-close" aria-label="Close">✕</button>\n    </div>\n  </div>\n\n  <div id="ck-modal">\n    <div class="box">\n      <strong>Copy this embed</strong>\n      <p style="font-size:13px;color:#444">Paste into another site:</p>\n      <textarea id="ck-embed" readonly></textarea>\n      <div class="row">\n        <button id="ck-copy">Copy</button>\n        <button id="ck-close-modal">Close</button>\n      </div>\n    </div>\n  </div>\n\n  <script>('+arguments.callee.toString()+')()<\/script>\n</div>';embedTA.value=template.trim();const qs=sel=>root.querySelector(sel);qs('#ck-get').onclick=()=>{modal.style.display='flex'};qs('#ck-close').onclick=()=>{bar.remove()};qs('#ck-accept').onclick=()=>{bar.remove()};qs('#ck-close-modal').onclick=()=>{modal.style.display='none'};qs('#ck-copy').onclick=()=>{embedTA.select();document.execCommand('copy');qs('#ck-copy').textContent="Copied!";setTimeout(()=>{qs('#ck-copy').textContent="Copy"},1500)}})()</script>
+</div>
